@@ -1,0 +1,8 @@
+dist/
+node_modules/
+db_data/
+db_data_prod/
+
+.env
+
+docker-compose.prod.yml

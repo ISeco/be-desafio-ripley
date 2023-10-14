@@ -1,0 +1,22 @@
+version: "3.1"
+
+services:
+  mysql_server:
+    image: mysql:latest
+    restart: always
+    container_name: ${MYSQL_DATABASE}
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./db_data/mysql:/var/lib/mysql
+    ports:
+      - ${MYSQL_PORT}:${MYSQL_PORT}
+    networks:
+      - backend  
+
+networks:
+  backend:
+    driver: bridge

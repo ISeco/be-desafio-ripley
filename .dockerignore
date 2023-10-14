@@ -1,0 +1,11 @@
+db_data/
+db_data_prod/
+
+.env.example
+
+docker-compose.yml
+docker-compose.prod.yml
+
+.gitignore
+
+/dist
