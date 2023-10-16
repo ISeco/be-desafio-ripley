@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start:devapi": "ts-node-dev ./src/infrastructure/apirest/index.ts",
+    "dev": "ts-node-dev ./src/infrastructure/apirest/index.ts",
     "start": "knex migrate:latest && ts-node ./dist/src/infrastructure/apirest/index.js",
     "build": "tsc --project tsconfig.json",
     "lint": "tslint -c tslint.json -p tsconfig.json",

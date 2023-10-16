@@ -1,6 +1,6 @@
-import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import Router from "../routes";
+import express, { Express, Request, Response } from "express";
 
 const server: Express = express();
 
