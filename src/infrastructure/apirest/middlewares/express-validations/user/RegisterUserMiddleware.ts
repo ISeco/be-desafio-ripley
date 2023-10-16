@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import { body, validationResult, FieldValidationError } from "express-validator";
 
 const { BAD_REQUEST } = StatusCodes;
-const regex: RegExp = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/;
+const regex: RegExp = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/;
 
 const BODY_STRING_VALIDATION = (key: string) => 
   body(key)
