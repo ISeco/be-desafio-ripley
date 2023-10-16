@@ -50,7 +50,6 @@ class MySQLRegisterNewUserRepository implements IRegisterNewUserRepository {
       if (response.length === 0) throw new ErrorException(404, ErrorType.User.ERROR_USER_NOT_FOUND);
       return this.toUserModel(response);
     } catch (error: any) {
-      console.log(error);
       const customInstance = error instanceof ErrorException;
       const message = customInstance ? error.message : ErrorType.User.ERROR_GETTING_USER;
       const status = customInstance ? error.code : 500;

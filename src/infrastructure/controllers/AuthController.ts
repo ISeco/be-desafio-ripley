@@ -105,7 +105,6 @@ class AuthController {
           token
         });
       } catch (error: any) {
-        console.log(error);
         return res.status(BAD_REQUEST).json({ message: 'Invalid token', ok: false });
       }
     });
