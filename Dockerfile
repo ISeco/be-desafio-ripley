@@ -7,7 +7,7 @@ FROM node:18.18-alpine3.17 as builder
 WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-RUN npm run test
+RUN npm run test:unit
 RUN npm run build
 
 FROM node:18.18-alpine3.17 as prod-deps
