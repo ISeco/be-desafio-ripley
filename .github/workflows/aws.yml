@@ -50,7 +50,6 @@ jobs:
 
     - name: 'Create task-definition JSON'
       run: |
-        touch task-definition.json
         echo ${{ secrets.ECS_TASK_DEFINITION }} >> task-definition.json
         
     - name: Login to Amazon ECR
