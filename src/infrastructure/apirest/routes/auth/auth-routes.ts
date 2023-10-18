@@ -10,6 +10,7 @@ import AuthController from "../../../controllers/AuthController";
 // Middlewares
 import LoginUserMiddleware from "../../middlewares/express-validations/user/LoginUserMiddleware";
 import RegisterUserMiddleware from "../../middlewares/express-validations/user/RegisterUserMiddleware";
+import ValidateTokenHeadersMiddleware from "../../middlewares/express-validations/user/ValidateTokenHeadersMiddleware";
 
 const router = express.Router();
 
@@ -20,6 +21,6 @@ const authController = new AuthController(authUseCase, userUseCase);
 
 router.use('/register', RegisterUserMiddleware, authController.registerUser());
 router.use('/login', LoginUserMiddleware, authController.loginUser());
-router.use(authController.validateToken());
+router.use(ValidateTokenHeadersMiddleware, authController.validateToken());
 
 export default router;

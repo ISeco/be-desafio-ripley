@@ -5,6 +5,7 @@ import { IAuthUseCase } from '../../domain/interfaces/use-cases/IAuthUseCase';
 import { IUserUseCase } from '../../domain/interfaces/use-cases/IUserUseCase';
 
 import { StatusCodes } from "http-status-codes";
+import ErrorException from '../../domain/error-exception/ErrorException';
 
 const {
   OK,
@@ -76,7 +77,10 @@ class AuthController {
         });       
 
       } catch (error: any) {
-        return res.status(error.code).json({ message: error.message });
+        const customInstance = error instanceof ErrorException;
+        const message = customInstance ? error.message : 'Error logging in user';
+        const status = customInstance ? error.code : 500;
+        return res.status(status).json({ message });
       }
     });
     return this.router;
@@ -105,7 +109,10 @@ class AuthController {
           token
         });
       } catch (error: any) {
-        return res.status(BAD_REQUEST).json({ message: 'Invalid token', ok: false });
+        const customInstance = error instanceof ErrorException;
+        const message = customInstance ? 'Invalid token' : 'Error validating token';
+        const status = customInstance ? error.code : 500;
+        return res.status(status).json({ message, ok: false });
       }
     });
     return this.router;
