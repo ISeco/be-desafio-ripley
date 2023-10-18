@@ -50,7 +50,7 @@ jobs:
 
     - name: Download task definition
       run: |
-        aws ecs describe-task-definition --task-definition **your task defination name** --query taskDefinition > taskdefinition.json
+        aws ecs describe-task-definition --task-definition ${{ secrets.TASK_DEFINITION_NAME }} --query taskDefinition > taskdefinition.json
 
         
     - name: Login to Amazon ECR
