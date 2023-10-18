@@ -9,7 +9,7 @@ env:
   ECR_REPOSITORY: ripley-tech
   ECS_SERVICE: service-ripley-tech
   ECS_CLUSTER: TechRipleyCluster
-  ECS_TASK_DEFINITION: task-definition.json
+  ECS_TASK_DEFINITION: taskdefinition.json
 
   CONTAINER_NAME: ripley-container
 
@@ -48,9 +48,10 @@ jobs:
         echo COGNITO_CLIENT_ID=${{ secrets.COGNITO_CLIENT_ID }} >> .env
         echo COGNITO_IDENTITY_POOL_ID=${{ secrets.COGNITO_IDENTITY_POOL_ID }} >> .env
 
-    - name: 'Create task-definition JSON'
+    - name: Download task definition
       run: |
-        echo ${{ secrets.ECS_TASK_DEFINITION }} >> task-definition.json
+        aws ecs describe-task-definition --task-definition **your task defination name** --query taskDefinition > taskdefinition.json
+
         
     - name: Login to Amazon ECR
       id: login-ecr
